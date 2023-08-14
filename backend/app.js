@@ -6,7 +6,8 @@ const PORT = 3000;
 const tasks = [
   { id: 1, title: 'Hacer compras' },
   { id: 2, title: 'Estudiar para el examen' },
-  { id: 3, title: 'Ejercicio diario' }
+  { id: 3, title: 'Ejercicio diario' },
+  { id: 4, title: 'Desplegar en GCP' },
 ];
 
 // Ruta para obtener la lista de tareas
