@@ -20,4 +20,4 @@ jobs:
 
     - name: Deploy to Server
       run: |
-        ssh dev.danielboggiano@34.27.119.80 'cd /home/dev.danielboggiano/docker-gcp-deployment && git pull origin main && docker-compose down && docker-compose up -d --build'
+        ssh dev.danielboggiano@34.27.119.80 'sudo su && cd /home/dev.danielboggiano/docker-gcp-deployment && git pull origin main && docker-compose down && docker-compose up -d --build'
