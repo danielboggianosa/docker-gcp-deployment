@@ -16,8 +16,9 @@ jobs:
     - name: Set up SSH
       uses: webfactory/ssh-agent@v0.5.0
       with:
-        ssh-private-key: ${{ secrets.SERVER_SSH_PRIVATE_KEY }}
-
-    - name: Deploy to Server
-      run: |
-        ssh -i ${{ secret.SERVER_SSH_PRIVATE_KEY }} dev.danielboggiano@34.27.119.80 'sudo sh /home/dev.danielboggiano/docker-gcp-deployment/deploy.sh'
+        key: ${{ secrets.SERVER_SSH_PRIVATE_KEY }}
+        username: dev.danielboggiano
+        host: 34.27.119.80
+        port: 22
+        script: |
+        sudo sh /home/dev.danielboggiano/docker-gcp-deployment/deploy.sh
