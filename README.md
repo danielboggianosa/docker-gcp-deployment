@@ -1,6 +1,9 @@
 # Docker-Nginx Deploy on GCP
 Desliegue de aplicaciones front y back con docker y nginx usando Google Cloud Platform
 
+## Objetivo
+Crear un entorno de despliegue continuo usando docker, GCP y Github Actions
+
 ## Requisitos previos
 1. Tener conocimientos de entornos linux para lo siguiente
    * Identificar y acceder al modo de super usuario
