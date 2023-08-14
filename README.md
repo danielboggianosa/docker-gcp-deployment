@@ -378,12 +378,16 @@ Aquí tienes un ejemplo de archivo `docker-compose.yml` que utiliza la red `demo
 version: '3'
 services:
   frontend:
-    image: nombre-de-tu-imagen-frontend
+    extends:
+      file: ./frontend/docker-compose.yml
+      service: frontend
     networks:
       - demo_deploy
 
   backend:
-    image: nombre-de-tu-imagen-backend
+    extends:
+      file: ./backend/docker-compose.yml
+      service: backend
     networks:
       - demo_deploy
 
@@ -429,7 +433,7 @@ docker compose up
 Aquí tienes un ejemplo de un archivo de configuración de GitHub Actions que ejecuta un flujo cuando se realiza un push a la rama `main`. El flujo se conectará por SSH a tu servidor y realizará la reconstrucción del proyecto:
 
 ```yaml
-name: Deploy to Server
+name: SSH Command Execution
 
 on:
   push:
@@ -441,22 +445,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Set up SSH
-      uses: webfactory/ssh-agent@v0.5.0
+    - name: Connect via SSH and run command
+      uses: appleboy/ssh-action@master
       with:
-        ssh-private-key: ${{ secrets.SERVER_SSH_PRIVATE_KEY }}
-
-    - name: Deploy to Server
-      run: |
-        ssh user@your_server_ip 'cd /path/to/your/project && git pull origin main && docker-compose down && docker-compose up -d'
+        host: your_server_ip # Reemplaza con la dirección del servidor
+        username: mi-usuario  # Reemplaza con el nombre de usuario para SSH
+        key: ${{ secrets.SERVER_SSH_PRIVATE_KEY }}
+        port: 22  # Puerto SSH (generalmente es 22, pero puede variar)
+        script: |
+          echo "Conexión SSH exitosa"
+          cd /path/to/your/project && sudo sh deploy.sh # Ejecutar archivo que contiene
 ```
 
 Asegúrate de reemplazar las siguientes variables:
 
-- `user`: Tu nombre de usuario en el servidor.
+- `username`: Tu nombre de usuario en el servidor.
 - `your_server_ip`: La dirección IP de tu servidor.
 - `/path/to/your/project`: La ruta en el servidor donde se encuentra tu proyecto.
 - `secrets.SERVER_SSH_PRIVATE_KEY`: Debes configurar una variable secreta en tu repositorio de GitHub para almacenar la clave SSH privada que se usará para conectarse al servidor. Puedes crear una clave SSH específica para este flujo y agregar la clave privada en la configuración de secretos de tu repositorio.
