@@ -19,4 +19,4 @@ jobs:
         port: 22  # Puerto SSH (generalmente es 22, pero puede variar)
         script: |
           echo "Conexión SSH exitosa"
-          cd /home/dev.danielboggiano/docker-gcp-deployment && sudo sh start.sh
+          cd /home/dev.danielboggiano/docker-gcp-deployment && sudo sh deploy.sh
