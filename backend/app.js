@@ -8,7 +8,7 @@ const tasks = [
   { id: 2, title: 'Estudiar para el examen' },
   { id: 3, title: 'Ejercicio diario' },
   { id: 4, title: 'Desplegar en GCP' },
-  { id: 5, title: 'Subir video a Youtube },
+  { id: 5, title: 'Subir video a Youtube' },
 ];
 
 // Ruta para obtener la lista de tareas
