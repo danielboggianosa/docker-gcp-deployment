@@ -14,7 +14,7 @@
 
     // Función para cargar las tareas desde el servidor
     async function fetchTasks() {
-      const response = await fetch('/tasks');
+      const response = await fetch('/api/tasks');
       const tasks = await response.json();
 
       tasks.forEach(task => {
