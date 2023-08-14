@@ -10,15 +10,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
     - name: Set up SSH
-      uses: webfactory/ssh-agent@v0.5.0
+      uses: appleboy/ssh-action@master
       with:
-        key: ${{ secrets.SERVER_SSH_PRIVATE_KEY }}
-        username: dev.danielboggiano
         host: 34.27.119.80
+        username: dev.danielboggiano
+        key: ${{ secrets.SERVER_SSH_PRIVATE_KEY }}
         port: 22
         script: |
-        sudo sh /home/dev.danielboggiano/docker-gcp-deployment/deploy.sh
+          echo "Conexión exitosa"
+          cd /home/dev.danielboggiano/docker-gcp-deployment && sudo sh deploy.sh
