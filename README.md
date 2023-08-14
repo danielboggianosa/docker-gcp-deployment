@@ -305,7 +305,7 @@ services:
     build:
       context: ./path/to/frontend # Ruta al directorio donde se encuentra tu Dockerfile y la aplicación de frontend
       dockerfile: Dockerfile    # Nombre de tu Dockerfile
-    image: nombre-de-tu-imagen-frontend
+    image: frontend
     ports:
       - "80"
     networks:
@@ -363,7 +363,7 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./nginx-config.conf:/etc/nginx/conf.d/default.conf
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
     depends_on:
       - backend
       - frontend
@@ -392,7 +392,7 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./nginx-config.conf:/etc/nginx/conf.d/default.conf
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
     networks:
       - demo_deploy
     depends_on:
