@@ -4,6 +4,9 @@ Desliegue de aplicaciones front y back con docker y nginx usando Google Cloud Pl
 ## Objetivo
 Crear un entorno de despliegue continuo usando docker, GCP y Github Actions
 
+## Video de Youtube
+https://youtu.be/kYD8mOg5ngs
+
 ## Requisitos previos
 1. Tener conocimientos de entornos linux para lo siguiente
    * Identificar y acceder al modo de super usuario
